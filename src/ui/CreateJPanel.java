@@ -6,6 +6,8 @@ package ui;
 
 import java.awt.Image;
 import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import static javax.swing.JFileChooser.APPROVE_OPTION;
@@ -28,7 +30,21 @@ public class CreateJPanel extends javax.swing.JPanel {
         this.person = person;
         
     }
+    String regexName = "^[a-zA-Z\\\\s]+";
+    String regexEmail = "^(.+)@(\\S+)$";
+    String regexSSN = "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$";
 
+    
+    public boolean regexEvaluator(String input, String regexPattern, String whichPattern){
+        if (input.matches(regexPattern) == true) {
+            return true;
+        }
+        else {
+            String errorMSG = String.format("Please enter correct %s format", whichPattern);
+            JOptionPane.showMessageDialog(this, errorMSG);
+            return false;
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -383,13 +399,28 @@ public class CreateJPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        boolean flag = true;
         person.setName(txtName.getText());
         person.setAddress(txtAddress.getText());
         person.setDob(txtDob.getText());
-        person.setEmailPrimary(txtEmailPrimary.getText());
-        person.setEmailSecondary(txtEmailSecondary.getText());
         
-        JOptionPane.showMessageDialog(this, "Person Information Saved Successfully.");
+        
+        // Validate SSN
+        String inputSSN = txtSSN.getText();
+        String inputEmailPrimary = txtEmailPrimary.getText();
+        String inputEmailSecondary = txtEmailSecondary.getText();
+        
+        boolean checkSSN = regexEvaluator(inputSSN, regexSSN, "SSN");
+        boolean checkEmailPrimary = regexEvaluator(inputEmailPrimary, regexEmail, "Primary Email");
+        boolean checkEmailSecondary = regexEvaluator(inputEmailSecondary, regexEmail, "Secondary Email");
+        
+        if (checkSSN && checkEmailPrimary && checkEmailSecondary) {
+            person.setSsn(inputSSN);
+            person.setEmailPrimary(inputEmailPrimary);
+            person.setEmailSecondary(inputEmailSecondary);
+        
+            JOptionPane.showMessageDialog(this, "Person Information Saved Successfully.");
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnBrowseImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseImageActionPerformed
@@ -404,8 +435,7 @@ public class CreateJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Image Uploaded Successfully.");
             
             ImageIcon ii = new ImageIcon(selectedImagePath);
-            Image image = ii.getImage().getScaledInstance(lblRelatedImage.getWidth(), lblRelatedImage.getHeight(), Image.SCALE_SMOOTH);            
-
+            Image image = ii.getImage().getScaledInstance(lblRelatedImage.getWidth(), lblRelatedImage.getHeight(), Image.SCALE_SMOOTH);
             person.setPersonImage(new ImageIcon(image));
         }
         

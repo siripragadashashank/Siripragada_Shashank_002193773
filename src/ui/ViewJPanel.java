@@ -349,8 +349,9 @@ public class ViewJPanel extends javax.swing.JPanel {
         txtName.setText(person.getName());
         //txtAddress.setText(person.getAddress());
         //txtDob.setText(person.getDob());
-        //txtEmailPrimary.setText(person.getEmailPrimary());
-        //txtEmailSecondary.setText(person.getEmailSecondary());
+        txtSSN.setText(person.getSsn());
+        txtEmailPrimary.setText(person.getEmailPrimary());
+        txtEmailSecondary.setText(person.getEmailSecondary());
         
         lblImage.setIcon(person.getPersonImage());
         lblRelatedImage.setIcon(person.getRelatedImage());
