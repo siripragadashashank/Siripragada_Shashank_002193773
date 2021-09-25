@@ -31,8 +31,13 @@ public class CreateJPanel extends javax.swing.JPanel {
         
     }
     String regexName = "^[a-zA-Z\\\\s]+";
+    String regexAddress = "^[a-zA-Z\\\\s]+";
+    String regexPhoneNumber = "^[0-9]{3}-[0-9]{3}-[0-9]{4}$";
+    String regexFax = "^[0-9]{3}-[0-9]{3}-[0-9]{4}$";
     String regexEmail = "^(.+)@(\\S+)$";
     String regexSSN = "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$";
+    String regexNumberField = "^[0-9]+$";
+    
 
     
     public boolean regexEvaluator(String input, String regexPattern, String whichPattern){
@@ -40,7 +45,7 @@ public class CreateJPanel extends javax.swing.JPanel {
             return true;
         }
         else {
-            String errorMSG = String.format("Please enter correct %s format", whichPattern);
+            String errorMSG = String.format("Please enter a valid %s", whichPattern);
             JOptionPane.showMessageDialog(this, errorMSG);
             return false;
         }
@@ -399,27 +404,57 @@ public class CreateJPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        boolean flag = true;
-        person.setName(txtName.getText());
-        person.setAddress(txtAddress.getText());
-        person.setDob(txtDob.getText());
-        
-        
-        // Validate SSN
-        String inputSSN = txtSSN.getText();
+        String inputName = txtName.getText();
+        String inputAddress = txtAddress.getText();
+        String inputPhonePrimary = txtPhonePrimary.getText();
+        String inputPhoneSecondary = txtPhoneSecondary.getText();
+        String inputFax = txtFax.getText();
         String inputEmailPrimary = txtEmailPrimary.getText();
         String inputEmailSecondary = txtEmailSecondary.getText();
+        String inputSSN = txtSSN.getText();
+        String inputHealthPlanNumber = txthealthPlanNumber.getText();
+        String inputMRN = txtMRN.getText();
+        String inputPrimaryBank = txtprimaryBankAccount.getText();
+        String inputSecondaryBank = txtsecondaryBankAccount.getText();
+        String inputLicense = txtLicenseNumber.getText();
+        String inputLicensePlate = txtLicensePlate.getText();
+        String inputDevice = txtDevice.getText();
+        String inputLinkedin = txtLinkedin.getText();
+        String inputIPAddr = txtIPAddr.getText();
+
+        person.setDob(txtDob.getText());
+
         
-        boolean checkSSN = regexEvaluator(inputSSN, regexSSN, "SSN");
+        boolean checkName = regexEvaluator(inputName, regexName, "Name");
+        boolean checkAddress = regexEvaluator(inputAddress, regexAddress, "Address");
+        
+        boolean checkPhonePrimary = regexEvaluator(inputPhonePrimary, regexPhoneNumber, "Primary Phone Number");
+        boolean checkPhoneSecondary = regexEvaluator(inputPhoneSecondary, regexPhoneNumber, "Secondary Phone Number");
+        boolean checkFax = regexEvaluator(inputFax, regexFax, "Fax Number");
         boolean checkEmailPrimary = regexEvaluator(inputEmailPrimary, regexEmail, "Primary Email");
         boolean checkEmailSecondary = regexEvaluator(inputEmailSecondary, regexEmail, "Secondary Email");
+        boolean checkSSN = regexEvaluator(inputSSN, regexSSN, "SSN");
+        boolean checkHealthPlanNumber = regexEvaluator(inputHealthPlanNumber, regexNumberField, "Health Plan Number");
+        boolean checkMRN = regexEvaluator(inputMRN, regexNumberField, "Medical Record Number");
+        boolean checkPrimaryBank = regexEvaluator(inputPrimaryBank, regexNumberField, "Primary Bank Account Number");
+        boolean checkSecondaryBank = regexEvaluator(inputSecondaryBank, regexNumberField, "Secondary Bank Account Number");
         
-        if (checkSSN && checkEmailPrimary && checkEmailSecondary) {
-            person.setSsn(inputSSN);
+        if (    checkName && checkAddress && checkPhonePrimary && 
+                checkPhoneSecondary && checkEmailPrimary && checkEmailSecondary &&
+                checkFax && checkSSN && checkHealthPlanNumber && checkMRN  &&  
+                checkPrimaryBank && checkSecondaryBank) {
+            person.setName(inputName);
+            person.setAddress(inputAddress);
             person.setEmailPrimary(inputEmailPrimary);
             person.setEmailSecondary(inputEmailSecondary);
+            person.setSsn(inputSSN);
+            person.setHealthPlanNumber(inputHealthPlanNumber);
+            person.setMrn(inputMRN);
+            person.setBankPrimary(inputPrimaryBank);
+            person.setBankSecondary(inputSecondaryBank);
+            
         
-            JOptionPane.showMessageDialog(this, "Person Information Saved Successfully.");
+            JOptionPane.showMessageDialog(this, "Information Saved Successfully.");
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
