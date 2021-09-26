@@ -491,7 +491,7 @@ public class CreateJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Image Uploaded Successfully.");
             
             ImageIcon ii = new ImageIcon(selectedImagePath);
-            Image image = ii.getImage().getScaledInstance(lblRelatedImage.getWidth(), lblRelatedImage.getHeight(), Image.SCALE_SMOOTH);
+            Image image = ii.getImage().getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
             person.setPersonImage(new ImageIcon(image));
         }
         
