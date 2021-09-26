@@ -520,7 +520,7 @@ public class CreateJPanel extends javax.swing.JPanel {
             
             ImageIcon imageIcon = new ImageIcon(selectedImagePath);
             Image resizedImage = imageIcon.getImage().getScaledInstance(lblRelatedImage.getWidth(), lblRelatedImage.getHeight(), Image.SCALE_SMOOTH);
-            person.setPersonImage(new ImageIcon(resizedImage));
+            person.setRelatedImage(new ImageIcon(resizedImage));
         }
     }//GEN-LAST:event_btnBrowseRelatedImageActionPerformed
 
@@ -540,7 +540,7 @@ public class CreateJPanel extends javax.swing.JPanel {
             
             ImageIcon imageIcon = new ImageIcon(selectedImagePath);
             Image resizedImage = imageIcon.getImage().getScaledInstance(lblBiometricImage.getWidth(), lblBiometricImage.getHeight(), Image.SCALE_SMOOTH);
-            person.setPersonImage(new ImageIcon(resizedImage));
+            person.setBiometric(new ImageIcon(resizedImage));
         }
     }//GEN-LAST:event_btnBrowseBiometricImageActionPerformed
 
