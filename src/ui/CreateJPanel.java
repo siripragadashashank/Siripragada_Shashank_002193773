@@ -34,7 +34,7 @@ public class CreateJPanel extends javax.swing.JPanel {
     }
     String regexName = "^[a-zA-Z ]+$";
     String regexDob = "^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$";
-    //String regexAddress = "^[a-zA-Z\\\\s]+";
+    String regexAddress = "^(?=\\s*\\S).*$";
     String regexPhonePrimary = "^[0-9]{3}-[0-9]{3}-[0-9]{4}$";
     String regexPhoneSecondary = "^$|[0-9]{3}-[0-9]{3}-[0-9]{4}$";
     String regexFax = "^[0-9]{3}-[0-9]{3}-[0-9]{4}$";
@@ -45,16 +45,17 @@ public class CreateJPanel extends javax.swing.JPanel {
     String regexBankSecondary = "^$|[0-9]+$";
     //https://ntsi.com/drivers-license-format/
     String regexLicenseNumber = "^[a-zA-Z0-9]+$";
-    String regexLicensePlate = "^[A-Z0-9]+[A-Z0-9 ]+$";
+    //https://www.licenseplates.cc/MA
+    String regexLicensePlate = "^[A-Z0-9]+[A-Z0-9 ]+\\d{7}$";
     String regexDevice = "^[0-9]+$";
     String regexLinkedin = "(http(s?)://)*[a-z]{2,3}\\.linkedin\\.com\\/in\\/[a-zA-Z0-9_-]+$";
     String regexIPAddr = "^([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\." +
            "([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\." +
            "([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\." +
            "([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$";
-    //String regexUnique = "^[a-zA-Z\\\\s]+";
+    String regexUnique = "^(?=\\s*\\S).*$";
     
-
+    
     
     public boolean regexEvaluator(String input, String regexPattern, String whichPattern){
         if (input.matches(regexPattern) == true) {
@@ -433,7 +434,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         String inputUnique = txtUnique.getText();
 
         boolean checkName = regexEvaluator(inputName, regexName, "Name");
-        //boolean checkAddress = regexEvaluator(inputAddress, regexAddress, "Address");
+        boolean checkAddress = regexEvaluator(inputAddress, regexAddress, "Address");
         boolean checkDob = regexEvaluator(inputDob, regexDob, "Date of Birth in mm/dd/yyyy format");
         boolean checkPhonePrimary = regexEvaluator(inputPhonePrimary, regexPhonePrimary, "Primary US Phone Number");
         boolean checkPhoneSecondary = regexEvaluator(inputPhoneSecondary, regexPhoneSecondary, "Secondary US Phone Number");
@@ -450,14 +451,15 @@ public class CreateJPanel extends javax.swing.JPanel {
         boolean checkDevice = regexEvaluator(inputDevice, regexDevice, "Device Information");
         boolean checkLinkedin = regexEvaluator(inputLinkedin, regexLinkedin, "LinkedIn URL");
         boolean checkIPAddr = regexEvaluator(inputIPAddr, regexIPAddr, "IP Address");
-        //boolean checkUnique = regexEvaluator(inputUnique, regexUnique, "Unique Identifier");
+        boolean checkUnique = regexEvaluator(inputUnique, regexUnique, "Unique Identifier");
         
-        if (    checkName && checkDob && 
+        if (    checkName && checkDob && checkAddress &&
                 checkPhonePrimary && checkPhoneSecondary && 
                 checkEmailPrimary && checkEmailSecondary &&
                 checkPrimaryBank && checkSecondaryBank &&
                 checkFax && checkSSN && checkHealthPlanNumber && checkMRN  &&
-                checkLicenseNumber && checkLicensePlate && checkDevice && checkLinkedin && checkIPAddr) {
+                checkLicenseNumber && checkLicensePlate && checkDevice && 
+                checkLinkedin && checkIPAddr && checkUnique) {
             person.setName(inputName);
             person.setDob(inputDob);
             person.setAddress(inputAddress);
