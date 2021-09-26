@@ -30,9 +30,9 @@ public class Person {
     private String device;
     private String linkedin;
     private String ipaddr;   
-    public ImageIcon personImage;
-    public ImageIcon relatedImage;
-    public ImageIcon biometric;
+    private ImageIcon personImage;
+    private ImageIcon relatedImage;
+    private ImageIcon biometric;
     private String unique;
 
     public String getName() {

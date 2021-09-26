@@ -364,6 +364,8 @@ public class ViewJPanel extends javax.swing.JPanel {
         txtName.setText(person.getName());
         txtAddress.setText(person.getAddress());
         txtDob.setText(person.getDob());
+        txtPhonePrimary.setText(person.getPhonePrimary());
+        txtPhoneSecondary.setText(person.getPhoneSecondary());
         txtFax.setText(person.getFax());
         txtEmailPrimary.setText(person.getEmailPrimary());
         txtEmailSecondary.setText(person.getEmailSecondary());

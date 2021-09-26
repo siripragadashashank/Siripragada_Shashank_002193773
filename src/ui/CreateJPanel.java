@@ -446,7 +446,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         boolean checkPrimaryBank = regexEvaluator(inputPrimaryBank, regexNumberField, "Primary Bank Account Number");
         boolean checkSecondaryBank = regexEvaluator(inputSecondaryBank, regexBankSecondary, "Secondary Bank Account Number");
         boolean checkLicenseNumber = regexEvaluator(inputLicenseNumber, regexLicenseNumber, "US Driving License Number");
-        boolean checkLicensePlate = regexEvaluator(inputLicensePlate, regexLicensePlate, "License Plate");
+        boolean checkLicensePlate = regexEvaluator(inputLicensePlate, regexLicensePlate, "License Plate Number");
         boolean checkDevice = regexEvaluator(inputDevice, regexDevice, "Device Information");
         boolean checkLinkedin = regexEvaluator(inputLinkedin, regexLinkedin, "LinkedIn URL");
         boolean checkIPAddr = regexEvaluator(inputIPAddr, regexIPAddr, "IP Address");
