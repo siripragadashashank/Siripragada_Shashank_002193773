@@ -56,58 +56,55 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="txtLicenseNumber" min="-2" pref="182" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="txtLicensePlate" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtDevice" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtLinkedin" alignment="1" max="32767" attributes="0"/>
-                          <Component id="txtIPAddr" alignment="1" max="32767" attributes="0"/>
-                          <Component id="txtUnique" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtLicensePlate" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
+                          <Component id="txtDevice" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
+                          <Component id="txtIPAddr" alignment="1" min="-2" pref="182" max="-2" attributes="0"/>
+                          <Component id="txtUnique" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
+                          <Component id="txtLinkedin" alignment="1" min="-2" pref="182" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblprimaryBankAccount" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="txtprimaryBankAccount" min="-2" pref="182" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="lblprimaryBankAccount" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="txtprimaryBankAccount" min="-2" pref="182" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="lblFax" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="txtFax" min="-2" pref="182" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="lblSSN" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblhealthPlanNumber" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblFax" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="txtFax" min="-2" pref="182" max="-2" attributes="0"/>
+                          <EmptySpace min="42" pref="42" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtSSN" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
+                              <Component id="txthealthPlanNumber" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
                           </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="lblName" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="txtName" min="-2" pref="182" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
+                              <Component id="lblEmailPrimary" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="txtEmailPrimary" min="-2" pref="182" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="lblSSN" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblhealthPlanNumber" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPhonePrimary" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="42" pref="42" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtSSN" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
-                                  <Component id="txthealthPlanNumber" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblName" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="txtName" min="-2" pref="182" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="lblEmailPrimary" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                  <Component id="txtEmailPrimary" min="-2" pref="182" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblPhonePrimary" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="42" pref="42" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtPhonePrimary" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
-                                      <Component id="txtAddress" alignment="1" min="-2" pref="182" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="txtPhonePrimary" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
+                                  <Component id="txtAddress" alignment="1" min="-2" pref="182" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
