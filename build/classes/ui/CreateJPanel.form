@@ -115,7 +115,6 @@
                               <Component id="txtDob" min="-2" pref="117" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -141,9 +140,10 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblRelatedImage" min="-2" pref="165" max="-2" attributes="0"/>
                   <Component id="lblBiometricImage" min="-2" pref="165" max="-2" attributes="0"/>
@@ -414,7 +414,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblDevice">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Device Details:"/>
+        <Property name="text" type="java.lang.String" value="Device Serial Number:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDevice">

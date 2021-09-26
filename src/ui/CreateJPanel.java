@@ -44,9 +44,9 @@ public class CreateJPanel extends javax.swing.JPanel {
     String regexNumberField = "^[0-9]+$";
     String regexBankSecondary = "^$|[0-9]+$";
     //https://ntsi.com/drivers-license-format/
-    String regexLicenseNumber = "^[a-zA-Z0-9]+$";
+    String regexLicenseNumber = "^[a-zA-Z0-9]{4,14}$";
     //https://www.licenseplates.cc/MA
-    String regexLicensePlate = "^[A-Z0-9]+[A-Z0-9 ]+\\d{7}$";
+    String regexLicensePlate = "^[A-Z0-9]+[A-Z0-9 ]{4,7}$";
     String regexDevice = "^[0-9]+$";
     String regexLinkedin = "(http(s?)://)*[a-z]{2,3}\\.linkedin\\.com\\/in\\/[a-zA-Z0-9_-]+$";
     String regexIPAddr = "^([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\." +
@@ -176,7 +176,7 @@ public class CreateJPanel extends javax.swing.JPanel {
 
         lblLicensePlate.setText("License Plate Number:");
 
-        lblDevice.setText("Device Details:");
+        lblDevice.setText("Device Serial Number:");
 
         lblLinkedin.setText("LinkedIn:");
 
@@ -279,8 +279,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                                 .addGap(51, 51, 51)
                                 .addComponent(lblDob)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -301,7 +300,8 @@ public class CreateJPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBrowseBiometricImage)
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblRelatedImage, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblBiometricImage, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -463,6 +463,9 @@ public class CreateJPanel extends javax.swing.JPanel {
             person.setName(inputName);
             person.setDob(inputDob);
             person.setAddress(inputAddress);
+            person.setPhonePrimary(inputPhonePrimary);
+            person.setPhoneSecondary(inputPhoneSecondary);
+            person.setFax(inputFax);
             person.setEmailPrimary(inputEmailPrimary);
             person.setEmailSecondary(inputEmailSecondary);
             person.setSsn(inputSSN);
@@ -483,55 +486,61 @@ public class CreateJPanel extends javax.swing.JPanel {
 
     private void btnBrowseImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseImageActionPerformed
         // TODO add your handling code here:
-        JFileChooser browseImageFile = new JFileChooser();
-        FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
-        browseImageFile.addChoosableFileFilter(fnef);
-        int showOpenDialogue = browseImageFile.showOpenDialog(null);
+        JFileChooser browser = new JFileChooser();
+        FileNameExtensionFilter fileNameFilter = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+        
+        browser.addChoosableFileFilter(fileNameFilter);
+        
+        int showOpenDialogue = browser.showOpenDialog(null);
+        
         if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
-            File selectedImageFile = browseImageFile.getSelectedFile();
-            String selectedImagePath = selectedImageFile.getAbsolutePath();
+            File selected = browser.getSelectedFile();
+            String selectedImagePath = selected.getAbsolutePath();
             JOptionPane.showMessageDialog(this, "Image Uploaded Successfully.");
             
-            ImageIcon ii = new ImageIcon(selectedImagePath);
-            Image image = ii.getImage().getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
-            person.setPersonImage(new ImageIcon(image));
-        }
-        
+            ImageIcon imageIcon = new ImageIcon(selectedImagePath);
+            Image resizedImage = imageIcon.getImage().getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
+            person.setPersonImage(new ImageIcon(resizedImage));
+        }        
     }//GEN-LAST:event_btnBrowseImageActionPerformed
 
     private void btnBrowseRelatedImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseRelatedImageActionPerformed
         // TODO add your handling code here:
-        JFileChooser browseImageFile = new JFileChooser();
-        FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
-        browseImageFile.addChoosableFileFilter(fnef);
-        int showOpenDialogue = browseImageFile.showOpenDialog(null);
+        JFileChooser browser = new JFileChooser();
+        FileNameExtensionFilter fileNameFilter = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+        
+        browser.addChoosableFileFilter(fileNameFilter);
+        
+        int showOpenDialogue = browser.showOpenDialog(null);
+        
         if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
-            File selectedImageFile = browseImageFile.getSelectedFile();
-            String selectedImagePath = selectedImageFile.getAbsolutePath();
+            File selected = browser.getSelectedFile();
+            String selectedImagePath = selected.getAbsolutePath();
             JOptionPane.showMessageDialog(this, "Image Uploaded Successfully.");
             
-            ImageIcon ii = new ImageIcon(selectedImagePath);
-            Image image = ii.getImage().getScaledInstance(lblRelatedImage.getWidth(), lblRelatedImage.getHeight(), Image.SCALE_SMOOTH);            
-
-            person.setRelatedImage(new ImageIcon(image));
+            ImageIcon imageIcon = new ImageIcon(selectedImagePath);
+            Image resizedImage = imageIcon.getImage().getScaledInstance(lblRelatedImage.getWidth(), lblRelatedImage.getHeight(), Image.SCALE_SMOOTH);
+            person.setPersonImage(new ImageIcon(resizedImage));
         }
     }//GEN-LAST:event_btnBrowseRelatedImageActionPerformed
 
     private void btnBrowseBiometricImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseBiometricImageActionPerformed
         // TODO add your handling code here:
-        JFileChooser browseImageFile = new JFileChooser();
-        FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
-        browseImageFile.addChoosableFileFilter(fnef);
-        int showOpenDialogue = browseImageFile.showOpenDialog(null);
+        JFileChooser browser = new JFileChooser();
+        FileNameExtensionFilter fileNameFilter = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+        
+        browser.addChoosableFileFilter(fileNameFilter);
+        
+        int showOpenDialogue = browser.showOpenDialog(null);
+        
         if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
-            File selectedImageFile = browseImageFile.getSelectedFile();
-            String selectedImagePath = selectedImageFile.getAbsolutePath();
+            File selected = browser.getSelectedFile();
+            String selectedImagePath = selected.getAbsolutePath();
             JOptionPane.showMessageDialog(this, "Image Uploaded Successfully.");
             
-            ImageIcon ii = new ImageIcon(selectedImagePath);
-            Image image = ii.getImage().getScaledInstance(lblBiometricImage.getWidth(), lblBiometricImage.getHeight(), Image.SCALE_SMOOTH);            
-
-            person.setBiometric(new ImageIcon(image));
+            ImageIcon imageIcon = new ImageIcon(selectedImagePath);
+            Image resizedImage = imageIcon.getImage().getScaledInstance(lblBiometricImage.getWidth(), lblBiometricImage.getHeight(), Image.SCALE_SMOOTH);
+            person.setPersonImage(new ImageIcon(resizedImage));
         }
     }//GEN-LAST:event_btnBrowseBiometricImageActionPerformed
 
